@@ -1,18 +1,19 @@
 package utils
 
 import (
-	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
+
+	"golang.org/x/exp/slog"
 )
 
-func FetchFile(url, newName, downloadDir string) {
+func FetchFile(url, newName, downloadDir string) error {
 	resp, err := http.Get(url)
 	if err != nil {
-		fmt.Println("Error fetching the file:", err)
-		return
+		slog.Error("Error fetching the file:", err)
+		return err
 	}
 	defer resp.Body.Close()
 
@@ -22,16 +23,17 @@ func FetchFile(url, newName, downloadDir string) {
 
 	out, err := os.Create(filepath.Join(downloadDir, newName))
 	if err != nil {
-		fmt.Println("Error creating the file:", err)
-		return
+		slog.Error("Error creating the file:", err)
+		return err
 	}
 	defer out.Close()
 
 	_, err = io.Copy(out, resp.Body)
 	if err != nil {
-		fmt.Println("Error saving the file:", err)
-		return
+		slog.Error("Error saving the file:", err)
+		return err
 	}
 
-	fmt.Println("File fetched successfully.")
+	slog.Info("File fetched successfully.")
+	return nil
 }

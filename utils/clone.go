@@ -1,11 +1,12 @@
 package utils
 
 import (
-    "fmt"
-    "os/exec"
+	"os/exec"
+
+	"golang.org/x/exp/slog"
 )
 
-func CloneRepository(url, newName, cloneDir string) {
+func CloneRepository(url, newName, cloneDir string) error {
     cmd := exec.Command("git", "clone", url)
     if newName != "" {
         cmd.Args = append(cmd.Args, newName)
@@ -13,8 +14,10 @@ func CloneRepository(url, newName, cloneDir string) {
     cmd.Dir = cloneDir
     err := cmd.Run()
     if err != nil {
-        fmt.Println("Error:", err)
-        return
+        slog.Error("Error:", err)
+        return err
     }
-    fmt.Println("Repository cloned successfully.")
+
+    slog.Info("Repository cloned successfully.")
+    return nil
 }

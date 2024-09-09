@@ -1,10 +1,11 @@
 package cmd
 
 import (
-	"fmt"
-
-	"github.com/spf13/cobra"
 	"superfilemanager/utils"
+
+	"github.com/fatih/color"
+	"github.com/spf13/cobra"
+	"golang.org/x/exp/slog"
 )
 
 var cloneCmd = &cobra.Command{
@@ -15,11 +16,21 @@ var cloneCmd = &cobra.Command{
 		newName, _ := cmd.Flags().GetString("new-name")
 
 		if url == "" {
-			fmt.Println("Error: URL is required")
+			color.Red("Error: URL is required")
+			slog.Error("URL is required for cloning the repository")
 			return
 		}
 
-		utils.CloneRepository(url, newName, "./internal/repos")
+		color.Cyan("Cloning repository from URL: %s", url)
+		err := utils.CloneRepository(url, newName, "./internal/repos")
+		if err != nil {
+			color.Red("Failed to clone repository: %v", err)
+			slog.Error("Failed to clone repository", "url", url, "newName", newName, "error", err)
+			return
+		}
+
+		color.Green("Repository cloned successfully")
+		slog.Info("Repository cloned successfully", "url", url, "newName", newName)
 	},
 }
 

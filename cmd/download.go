@@ -5,6 +5,7 @@ import (
 	"superfilemanager/internal/minio"
 
 	"github.com/spf13/cobra"
+	"github.com/fatih/color"
 	"golang.org/x/exp/slog"
 )
 
@@ -17,6 +18,7 @@ var downloadCmd = &cobra.Command{
 
 		minioClient, err := minio.MinIOConnect()
 		if err != nil {
+			color.Red("Failed to connect to MinIO: %v", err)
 			slog.Error("Failed to connect to MinIO", "error", err)
 			return
 		}
@@ -25,10 +27,12 @@ var downloadCmd = &cobra.Command{
 
 		err = minioClient.Download(fileName, destPath)
 		if err != nil {
+			color.Red("Failed to download the file: %v", err)
 			slog.Error("Failed to download the file", "error", err, "file", fileName)
 			return
 		}
 
+		color.Green("File downloaded successfully: %s", fileName)
 		slog.Info("File downloaded successfully", "file", fileName)
 	},
 }

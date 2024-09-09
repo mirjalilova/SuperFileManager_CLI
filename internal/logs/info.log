@@ -1,0 +1,17 @@
+2024/09/09 10:20:12 INFO File uploaded locally file=internal/files/nbu.pdf
+2024/09/09 10:20:12 INFO File uploaded successfully file=nbu.pdf
+2024/09/09 10:20:12 INFO Bucket already exists bucket=superfile
+2024/09/09 10:20:12 INFO Connected to MinIO bucket=superfile
+2024/09/09 10:20:12 INFO File uploaded to MinIO file=nbu.pdf url=http://localhost:9000/superfile/nbu.pdf
+2024/09/09 10:21:29 INFO Bucket already exists bucket=superfile
+2024/09/09 10:21:29 INFO Connected to MinIO bucket=superfile
+2024/09/09 10:21:29 INFO Listed files from MinIO count=6
+2024/09/09 10:21:29 INFO Listed files from MinIO count=6
+2024/09/09 10:21:51 INFO Bucket already exists bucket=superfile
+2024/09/09 10:21:51 INFO Connected to MinIO bucket=superfile
+2024/09/09 10:21:51 INFO File downloaded from MinIO file=r.txt
+2024/09/09 10:21:51 INFO File downloaded successfully file=r.txt
+2024/09/09 10:26:52 INFO Repository cloned successfully.
+2024/09/09 10:26:52 INFO Repository cloned successfully url=git@github.com:mirjalilova/api-gateway_blacklist.git newName=nm
+2024/09/09 10:27:10 INFO File fetched successfully.
+2024/09/09 10:27:10 INFO File fetched successfully url=https://www.randomtext.me/download/txt/gibberish/p-1/20-45 newName=nbu.pdf
