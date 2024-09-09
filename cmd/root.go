@@ -24,4 +24,6 @@ func init() {
 	rootCmd.AddCommand(uploadCmd)
 	rootCmd.AddCommand(downloadCmd)
 	rootCmd.AddCommand(listCmd)
+	rootCmd.AddCommand(cloneCmd)
+	rootCmd.AddCommand(fetchCmd)
 }

@@ -3,7 +3,7 @@ package cmd
 import (
 	"os"
 	"path/filepath"
-	"superfilemanager/internal/filemanager"
+	"superfilemanager/utils/filemanager"
 	"superfilemanager/internal/minio"
 
 	"github.com/spf13/cobra"
