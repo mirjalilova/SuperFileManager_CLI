@@ -3,5 +3,5 @@ package main
 import "superfilemanager/cmd"
 
 func main() {
-    cmd.Execute()
+	cmd.Execute()
 }

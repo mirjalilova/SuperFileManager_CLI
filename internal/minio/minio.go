@@ -3,6 +3,7 @@ package minio
 import (
 	"context"
 	"fmt"
+
 	"github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 	"golang.org/x/exp/slog"
